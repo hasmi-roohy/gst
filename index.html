@@ -1,0 +1,126 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GST Invoice Splitter | Hasmi Roohy</title>
+    <meta
+      name="description"
+      content="A free GST invoice splitter that calculates taxable value, GST amount, CGST, SGST, IGST, discounts, and final invoice totals."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="tool-panel" aria-labelledby="tool-title">
+        <div class="heading-row">
+          <div>
+            <p class="eyebrow">Free online tool</p>
+            <h1 id="tool-title">GST Invoice Splitter</h1>
+          </div>
+          <a class="dh-link" href="https://digitalheroesco.com" target="_blank" rel="noreferrer">
+            Built for Digital Heroes
+          </a>
+        </div>
+
+        <p class="intro">
+          I built this because I often need a quick way to check GST-inclusive and GST-exclusive prices
+          without opening a spreadsheet.
+        </p>
+
+        <form class="calculator" id="gst-form">
+          <label>
+            Invoice amount
+            <span class="input-wrap">
+              <span>&#8377;</span>
+              <input id="amount" type="number" min="0" step="0.01" value="2500" inputmode="decimal">
+            </span>
+          </label>
+
+          <label>
+            GST rate
+            <select id="gst-rate">
+              <option value="0">0%</option>
+              <option value="5">5%</option>
+              <option value="12">12%</option>
+              <option value="18" selected>18%</option>
+              <option value="28">28%</option>
+            </select>
+          </label>
+
+          <label>
+            Price type
+            <select id="price-type">
+              <option value="exclusive" selected>GST extra</option>
+              <option value="inclusive">GST included</option>
+            </select>
+          </label>
+
+          <label>
+            Discount
+            <span class="input-wrap">
+              <span>&#8377;</span>
+              <input id="discount" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+            </span>
+          </label>
+
+          <fieldset>
+            <legend>Invoice type</legend>
+            <label class="choice">
+              <input type="radio" name="invoice-type" value="intra" checked>
+              Same state
+            </label>
+            <label class="choice">
+              <input type="radio" name="invoice-type" value="inter">
+              Different state
+            </label>
+          </fieldset>
+        </form>
+      </section>
+
+      <section class="result-panel" aria-live="polite">
+        <div class="summary">
+          <span>Final total</span>
+          <strong id="final-total">&#8377;0.00</strong>
+        </div>
+
+        <dl class="breakdown">
+          <div>
+            <dt>Taxable value</dt>
+            <dd id="taxable-value">&#8377;0.00</dd>
+          </div>
+          <div>
+            <dt>GST amount</dt>
+            <dd id="gst-amount">&#8377;0.00</dd>
+          </div>
+          <div>
+            <dt>CGST</dt>
+            <dd id="cgst">&#8377;0.00</dd>
+          </div>
+          <div>
+            <dt>SGST</dt>
+            <dd id="sgst">&#8377;0.00</dd>
+          </div>
+          <div>
+            <dt>IGST</dt>
+            <dd id="igst">&#8377;0.00</dd>
+          </div>
+          <div>
+            <dt>Effective rate</dt>
+            <dd id="effective-rate">0%</dd>
+          </div>
+        </dl>
+
+        <button class="copy-button" id="copy-summary" type="button">Copy summary</button>
+        <p class="copy-status" id="copy-status" role="status"></p>
+      </section>
+    </main>
+
+    <footer>
+      <span>Hasmi Roohy</span>
+      <a href="mailto:hasmiroohyshaik@gmail.com">hasmiroohyshaik@gmail.com</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
